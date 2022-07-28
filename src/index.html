@@ -6,9 +6,66 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" sizes="16x16" href="<%=require('./favicon.ico')%>">
-  <title>Регистрация в Slack-пространство Hexlet Students</title>
+  <title>Заявка в Slack-пространство Hexlet Students</title>
 </head>
-<body>
-  <h1>Регистрация в Slack-пространство Hexlet Students</h1>
+<body class="container">
+  <h1 class="my-5">Подключение в Slack-пространство Hexlet Students</h1>
+  <div class="container-fluid mb-5">
+    <div class="row g-5">
+      <div class="col">
+        <h2>Почему нужно регистрироваться?</h2>
+        <ul class="list-group list-group-numbered list-group-flush">
+          <li class="list-group-item">
+            Slack не имеет общего аккаунта. Новое пространство -- новая регистрация
+          </li>
+          <li class="list-group-item">
+            Это пространство предназначено только для действующих студентов. Здесь не будут появляться сомнительные
+            личности и вестись беседы на неуместные темы
+          </li>
+          <li class="list-group-item">
+            Процесс обучения выстроен вокруг конкретных инструментов, мы обучим вас ими пользоваться.
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h2>Как правильно регистрироваться?</h2>
+        <ol class="list-group list-group-numbered list-group-flush">
+          <li class="list-group-item">
+            С настольного компьютера или ноутбука. Slack некорректно ведёт себя на мобильных устройствах на этапе
+            регистрации
+          </li>
+          <li class="list-group-item">
+            Для пользователей из РФ необходимо использовать VPN. После регистрации Slack можно использовать без VPN
+          </li>
+          <li class="list-group-item">
+            Оставьте заявку и дождитесь, пока её одобрят. От подачи заявки до её одобрения могут пройти сутки.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <form action="#" name="email" class="container mb-5 w-75">
+    <fieldset>
+      <div class="mb-3">
+        <label for="hexlet">Почта, которую зарегистрировали на Хекслете</label>
+        <input id="hexlet" type="email" name="hexlet" class="form-control" required>
+      </div>
+      <div class="slackEmail mb-3 d-none">
+        <label for="slack">Почта на нероссийском сервисе для Slack</label>
+        <input id="slack" type="email" name="slack" class="form-control" aria-describedby="slackHelp" required>
+        <div id="slackHelp" class="form-text">
+          Подходят почты <code>@gmail.com</code>, <code>@icloud.com</code>, <code>@yahoo.com</code> и другие
+          "зарубежные" сервисы
+        </div>
+        <div class="slackFeedback text-danger visible">
+          Похоже, вы ввели почту от российского сервиса
+        </div>
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary" name="submit">Оставить заявку</button>
+  </form>
+  <span class="requestSent h2 text-center d-block d-none">
+    Заявка успешно отправлена, её одобрят в течение суток
+  </span>
 </body>
 </html>
