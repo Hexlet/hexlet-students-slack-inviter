@@ -38,7 +38,7 @@ const render = (el) => {
     el.messageSlackEmail.classList.add('invisible');
   }
 
-  if (!state.isRusEmailHexlet) {
+  if (!state.isRusEmailHexlet && !state.enabledSlackEmail) {
     el.form.slack.value = state.hexlet;
   } else {
     el.form.slack.value = state.slack;
