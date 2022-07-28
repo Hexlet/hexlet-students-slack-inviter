@@ -1,5 +1,7 @@
-import favicon from './favicon.ico';
 import './scss/styles.scss';
+// eslint-disable-next-line
+import favicon from './favicon.ico';
+// eslint-disable-next-line
 import * as bootstrap from 'bootstrap';
 
 const rusEmailBlockList = [
@@ -56,6 +58,7 @@ const render = (el) => {
     case 'sent':
       el.messageRequest.classList.remove(classNameHiddenElement);
       el.form.classList.add(classNameHiddenElement);
+      // eslint-disable-next-line
       alert(`hexlet=${state.hexlet}\nslack=${state.slack}`);
       break;
     default:

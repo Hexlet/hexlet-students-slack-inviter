@@ -3,7 +3,7 @@ install-dependencies:
 	npm ci
 
 lint:
-	npx eslint .
+	npx eslint ./src
 
 run:
 	npm run dev
