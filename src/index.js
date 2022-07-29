@@ -6,10 +6,10 @@ import * as bootstrap from 'bootstrap';
 
 const rusEmailBlockList = [
   'rambler.ru',
-  'mail.ru',
-  'yandex.ru',
-  'ya.ru',
-  'bk.ru',
+  // 'mail.ru',
+  // 'yandex.ru',
+  // 'ya.ru',
+  // 'bk.ru',
 ];
 const classNameHiddenElement = 'd-none';
 const checkRusEmail = (email) => rusEmailBlockList
@@ -56,10 +56,11 @@ const render = (el) => {
         .forEach((element) => element.removeAttribute('disabled'));
       break;
     case 'sent':
-      el.messageRequest.classList.remove(classNameHiddenElement);
+      // el.messageRequest.classList.remove(classNameHiddenElement);
       el.form.classList.add(classNameHiddenElement);
       // eslint-disable-next-line
       alert(`hexlet=${state.hexlet}\nslack=${state.slack}`);
+      window.location.href = 'instruction.html?result=sent';
       break;
     default:
       break;
@@ -71,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form: document.forms.email,
     containerSlackEmail: document.querySelector('.slackEmail'),
     messageSlackEmail: document.querySelector('.slackFeedback'),
-    messageRequest: document.querySelector('.requestSent'),
+    // messageRequest: document.querySelector('.requestSent'),
   };
 
   el.form.hexlet.addEventListener('input', (e) => {

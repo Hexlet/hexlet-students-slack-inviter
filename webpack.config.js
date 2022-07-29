@@ -2,13 +2,19 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src', 'index.js'),
+  entry: {
+    main: path.resolve(__dirname, 'src', 'index.js'),
+    instruction: path.resolve(__dirname, 'src', 'instruction.js'),
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
     clean: true,
   },
   devtool: 'inline-source-map',
+  devServer: {
+    watchFiles: ['./src/*'],
+  },
   module: {
     rules: [
       {
@@ -53,7 +59,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      filename: 'index.html',
       template: path.resolve(__dirname, 'src', 'index.html'),
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'instruction.html',
+      template: path.resolve(__dirname, 'src', 'instruction.html'),
+      chunks: ['instruction'],
     }),
   ],
 };

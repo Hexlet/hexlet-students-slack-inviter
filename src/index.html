@@ -8,42 +8,8 @@
   <link rel="icon" sizes="16x16" href="<%=require('./favicon.ico')%>">
   <title>Заявка в Slack-пространство Hexlet Students</title>
 </head>
-<body class="container">
-  <h1 class="my-5">Подключение в Slack-пространство Hexlet Students</h1>
-  <div class="container-fluid mb-5">
-    <div class="row g-5">
-      <div class="col">
-        <h2>Почему нужно регистрироваться?</h2>
-        <ul class="list-group list-group-numbered list-group-flush">
-          <li class="list-group-item">
-            Slack не имеет общего аккаунта. Новое пространство -- новая регистрация
-          </li>
-          <li class="list-group-item">
-            Это пространство предназначено только для действующих студентов. Здесь не будут появляться сомнительные
-            личности и вестись беседы на неуместные темы
-          </li>
-          <li class="list-group-item">
-            Процесс обучения выстроен вокруг конкретных инструментов, мы обучим вас ими пользоваться.
-          </li>
-        </ul>
-      </div>
-      <div class="col">
-        <h2>Как правильно регистрироваться?</h2>
-        <ol class="list-group list-group-numbered list-group-flush">
-          <li class="list-group-item">
-            С настольного компьютера или ноутбука. Slack некорректно ведёт себя на мобильных устройствах на этапе
-            регистрации
-          </li>
-          <li class="list-group-item">
-            Для пользователей из РФ необходимо использовать VPN. После регистрации Slack можно использовать без VPN
-          </li>
-          <li class="list-group-item">
-            Оставьте заявку и дождитесь, пока её одобрят. От подачи заявки до её одобрения могут пройти сутки.
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
+<body class="container py-3">
+  <h1 class="my-3">Подключение в Slack-пространство Hexlet Students</h1>
   <form action="#" name="email" class="container mb-5 w-75">
     <fieldset>
       <div class="mb-3">
@@ -64,8 +30,26 @@
     </fieldset>
     <button type="submit" class="btn btn-primary" name="submit">Оставить заявку</button>
   </form>
-  <span class="requestSent h2 text-center d-block d-none">
-    Заявка успешно отправлена, её одобрят в течение суток
-  </span>
+  <div class="container-fluid mb-5 w-75">
+    <h2>Почему нужно регистрироваться?</h2>
+    <ul class="list-group list-group-numbered list-group-flush">
+      <li class="list-group-item">
+        Это пространство предназначено только для действующих студентов. Здесь не будут появляться сомнительные личности и вестись беседы на неуместные темы
+      </li>
+      <li class="list-group-item">
+        Это удобный мессенджер, вокруг которого мы построили процесс обучения. Многие вещи будут происходить именно в Slack. Если ранее вы им не пользовались, мы обучим
+      </li>
+      <li class="list-group-item">
+        Даже если вы ранее регистрировались в другом пространстве, нужно заново пройти регистрацию. Slack не имеет общего аккаунта. Новое пространство — новая регистрация
+      </li>
+    </ul>
+  </div>
+  <!--  <p class="text-end text-muted">-->
+  <!--    Ищите <a href="./instruction.html">инструкцию</a>?-->
+  <!--  </p>-->
+  <p class="border-top my-3 pt-3 text-center">
+    Если всё непонятно, ничего не работает, приглашения не дали, никакого праздника, то напишите на
+    <a href="mailto:support@hexlet.io" target="_blank">support@hexlet.io</a>
+  </p>
 </body>
 </html>
