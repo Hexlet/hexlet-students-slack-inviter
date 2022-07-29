@@ -5,7 +5,7 @@ import favicon from './favicon.ico';
 import * as bootstrap from 'bootstrap';
 
 const resultAlertMap = new Map([
-  ['sent', 'Заявка успешно отправлена!'],
+  ['sent', 'Заявка успешно отправлена и будет принята в течение дня'],
   ['exist', 'Заявка уже отправлялась, дождитесь её рассмотрения'],
 ]);
 const calcIframesHeight = (iframes) => iframes.forEach((iframe) => {
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ${resultAlertMap.get(result)}
       </div>
     `);
-    window.history.replaceState(null, null, window.location.pathname);
   }
+  window.history.replaceState(null, null, window.location.pathname);
   window.addEventListener('resize', () => calcIframesHeight(iframes));
   calcIframesHeight(iframes);
 });

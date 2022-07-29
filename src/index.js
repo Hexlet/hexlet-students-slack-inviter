@@ -4,6 +4,54 @@ import favicon from './favicon.ico';
 // eslint-disable-next-line
 import * as bootstrap from 'bootstrap';
 
+const sendRequest = ({ hexlet, slack }) => {
+  const body = {
+    user: slack,
+    team_domain: 'hexlet-students',
+    badge_url: 'hexlet',
+    badge_type: 'questions',
+    answers: [
+      {
+        question: 'hexlet',
+        require: true,
+        answer: hexlet,
+      },
+    ],
+    newsletter_checked: false,
+  };
+
+  // return Promise.reject(new Error('ААААаааааААааааА!!!1!'));
+  return Promise.resolve({
+    code: Math.round(Math.random()),
+    body,
+  });
+
+  // return fetch('https://communityinviter.com/api/questions-invite', {
+  //   method: 'POST',
+  //   body: JSON.stringify(body),
+  //   headers: {
+  //     'Content-Type': 'application/json; charset=UTF-8',
+  //   },
+  // })
+  //   .then((res) => {
+  //     if (res.ok) {
+  //       return res.json();
+  //     }
+  //
+  //     return res
+  //       .json()
+  //       .then(({ message }) => {
+  //         res.message = message || `Ошибка ${res.status}`;
+  //         return Promise.reject(res);
+  //       });
+  //   })
+  //   .catch((err) => {
+  //     // eslint-disable-next-line
+  //     console.error(err);
+  //     throw new Error(`Ошибка отправки инвайта: ${err.message}`);
+  //   });
+};
+
 const rusEmailBlockList = [
   'rambler.ru',
   // 'mail.ru',
@@ -13,10 +61,11 @@ const rusEmailBlockList = [
 ];
 const classNameHiddenElement = 'd-none';
 const checkRusEmail = (email) => rusEmailBlockList
-  .some((domain) => email.includes(domain));
+  .some((domain) => email.endsWith(`@${domain}`));
 
 const state = {
   formState: 'filling',
+  formSendResult: '',
   enabledSlackEmail: false,
   isRusEmailHexlet: false,
   isRusEmailSlack: false,
@@ -48,19 +97,30 @@ const render = (el) => {
     case 'sending':
       Array.from(el.form.elements)
         .forEach((element) => element.setAttribute('disabled', 'disabled'));
-      state.formState = 'sent';
-      render(el);
+      sendRequest(state)
+        .then((res) => {
+          state.formState = 'sent';
+          const code = (res.code !== undefined) ? parseFloat(res.code) : -1;
+          if (code === 1 || code === 0) {
+            state.formSendResult = (code === 1) ? 'sent' : 'exist';
+          }
+          render(el);
+        })
+        .catch((err) => {
+          state.formState = 'failed';
+          // eslint-disable-next-line
+          alert(err);
+          render(el);
+        });
+
       break;
     case 'failed':
       Array.from(el.form.elements)
         .forEach((element) => element.removeAttribute('disabled'));
       break;
     case 'sent':
-      // el.messageRequest.classList.remove(classNameHiddenElement);
       el.form.classList.add(classNameHiddenElement);
-      // eslint-disable-next-line
-      alert(`hexlet=${state.hexlet}\nslack=${state.slack}`);
-      window.location.href = 'instruction.html?result=sent';
+      window.location.href = `instruction.html?result=${state.formSendResult}`;
       break;
     default:
       break;
@@ -72,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form: document.forms.email,
     containerSlackEmail: document.querySelector('.slackEmail'),
     messageSlackEmail: document.querySelector('.slackFeedback'),
-    // messageRequest: document.querySelector('.requestSent'),
   };
 
   el.form.hexlet.addEventListener('input', (e) => {
