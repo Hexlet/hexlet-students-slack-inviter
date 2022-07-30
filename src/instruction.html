@@ -137,46 +137,53 @@
           <li class="list-group-item">
             <span class="font-monospace">[необязательно]</span>
             Использование прокси для подтверждения аккаунта
-            <p class="d-flex text-muted">
-              Этот шаг надо выполнять только при отсутствии VPN и наличии ошибки при регистрации в Slack
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapse"
-                aria-expanded="false"
-                aria-controls="collapse">
-                Развернуть
-              </button>
-            </p>
-            <div class="collapse" id="collapse">
-              <div class="card card-body">
-                <p>1. Заберите из письма ссылку на инвайт. Сделать это можно, кликнув правой клавишей по кнопке и выбрать "Копировать ссылку"</p>
-                <a
-                  href="<%=require('./link.png')%>"
-                  target="_blank">
-                  <img
-                    width="50%"
-                    class="d-block m-auto"
-                    src="<%=require('./link.png')%>"
-                    alt="Письмо с приглашением, копирование ссылки">
-                </a>
-                <p class="mt-3">2. Вставьте скопированную ссылку в сервис
-                  <a href="https://www.croxyproxy.com/" target="_blank">CroxyProxy</a>
-                  и нажмите "идти"
-                </p>
-                <a
-                  href="<%=require('./proxy.png')%>"
-                  target="_blank">
-                  <img
-                    width="50%"
-                    class="d-block m-auto"
-                    src="<%=require('./proxy.png')%>"
-                    alt="Использование CroxyProxy">
-                </a>
-                <p class="mt-3">
-                  Откроется форма регистрации в Slack, переходите к следующему шагу.
-                </p>
+            <div class="accordion" id="accordionProxy">
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingOneProxy">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOneProxy"
+                    aria-expanded="true"
+                    aria-controls="collapseOneProxy">
+                    Этот шаг надо выполнять только при отсутствии VPN и наличии ошибки при регистрации в Slack
+                  </button>
+                </h3>
+                <div
+                  id="collapseOneProxy"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingOneProxy"
+                  data-bs-parent="#accordionProxy">
+                  <div class="accordion-body">
+                    <p>1. Заберите из письма ссылку на инвайт. Сделать это можно, кликнув правой клавишей по кнопке и выбрать "Копировать ссылку"</p>
+                    <a
+                      href="<%=require('./link.png')%>"
+                      target="_blank">
+                      <img
+                        width="50%"
+                        class="d-block m-auto"
+                        src="<%=require('./link.png')%>"
+                        alt="Письмо с приглашением, копирование ссылки">
+                    </a>
+                    <p class="mt-3">2. Вставьте скопированную ссылку в сервис
+                      <a href="https://www.croxyproxy.com/" target="_blank">CroxyProxy</a>
+                      и нажмите "идти"
+                    </p>
+                    <a
+                      href="<%=require('./proxy.png')%>"
+                      target="_blank">
+                      <img
+                        width="50%"
+                        class="d-block m-auto"
+                        src="<%=require('./proxy.png')%>"
+                        alt="Использование CroxyProxy">
+                    </a>
+                    <p class="mt-3">
+                      Откроется форма регистрации в Slack, переходите к следующему шагу.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </li>
@@ -223,6 +230,73 @@
     <p class="border-start border-3 border-success ps-3 my-4 fs-5">
       Ознакомьтесь с информацией от куратора в Slack, она поможет понять что и как устроено, где смотреть расписание и что делать дальше.
     </p>
+  </div>
+  <div class="accordion" id="accordionHelp">
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="headingOneHelp">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOneHelp"
+          aria-expanded="true"
+          aria-controls="collapseOneHelp">
+          Полезные ссылки, чтобы скоротать время
+        </button>
+      </h3>
+      <div
+        id="collapseOneHelp"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingOneHelp"
+        data-bs-parent="#accordionHelp">
+        <div class="accordion-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <a
+                href="https://help.hexlet.io/ru/articles/280584-sistemnye-trebovaniya"
+                target="_blank">
+                Системные требования к железу и ПО
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://help.hexlet.io/ru/articles/110060-gruppovoi-plan"
+                target="_blank">
+                Групповое обучение
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://help.hexlet.io/ru/articles/110040-nastavnik"
+                target="_blank">
+                Кто такой наставник
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://help.hexlet.io/ru/articles/111465-cto-takoe-proekty"
+                target="_blank">
+                Что такое проекты
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://help.hexlet.io/ru/articles/172515-karernyi-trek"
+                target="_blank">
+                Карьерный трек
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://www.youtube.com/c/HexletOrg/videos"
+                target="_blank">
+                Наш канал на YouTube
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   <hr>
   <p class="py-3 text-center">
