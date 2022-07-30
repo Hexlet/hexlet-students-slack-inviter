@@ -13,12 +13,36 @@
   <form action="#" name="email" class="container mb-5 w-75">
     <fieldset>
       <div class="mb-3">
-        <label for="hexlet">Почта, которую зарегистрировали на Хекслете</label>
-        <input id="hexlet" type="email" name="hexlet" class="form-control" required>
+        <label for="hexlet">Почта, которую зарегистрировали на
+          <a
+            href="https://ru.hexlet.io/account/settings/edit#:~:text=%D0%A2%D0%B5%D0%BA%D1%83%D1%89%D0%B8%D0%B9%20email"
+            target="_blank">
+            Хекслете
+          </a>
+        </label>
+        <input
+          id="hexlet"
+          type="email"
+          name="hexlet"
+          pattern="^.+@.+\..+$"
+          class="form-control"
+          placeholder="email на Хекслете"
+          autofocus
+          required>
+        <p>не продакшен, можно указать любую почту, особенно с <code>@rambler.ru</code></p>
       </div>
       <div class="slackEmail mb-3 d-none">
+        <p
+          class="m-0 border-start border-3 border-warning ps-2 text-muted">К сожалению, регистрация на почту российского сервиса ограничена со стороны Slack</p>
         <label for="slack">Почта на нероссийском сервисе для Slack</label>
-        <input id="slack" type="email" name="slack" class="form-control" aria-describedby="slackHelp" required>
+        <input
+          id="slack"
+          type="email" name="slack"
+          pattern="^.+@.+\..+$"
+          class="form-control"
+          placeholder="email для входа в Slack"
+          aria-describedby="slackHelp"
+          required>
         <div id="slackHelp" class="form-text">
           Подходят почты <code>@gmail.com</code>, <code>@icloud.com</code>, <code>@yahoo.com</code> и другие
           "зарубежные" сервисы

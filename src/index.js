@@ -62,6 +62,8 @@ const rusEmailBlockList = [
 const classNameHiddenElement = 'd-none';
 const checkRusEmail = (email) => rusEmailBlockList
   .some((domain) => email.endsWith(`@${domain}`));
+const emailRegex = /^.+@.+\..+$/i;
+const checkEmail = (email) => emailRegex.test(email);
 
 const state = {
   formState: 'filling',
@@ -94,9 +96,19 @@ const render = (el) => {
   }
 
   switch (state.formState) {
-    case 'sending':
+    case 'sending': {
       Array.from(el.form.elements)
         .forEach((element) => element.setAttribute('disabled', 'disabled'));
+
+      if (!(checkEmail(state.hexlet) && checkEmail(state.slack))) {
+        // eslint-disable-next-line
+        alert('Почта не прошла проверку на корректность. Она должна быть вида: name@domain.com');
+        state.formState = 'failed';
+        render(el);
+
+        break;
+      }
+
       sendRequest(state)
         .then((res) => {
           state.formState = 'sent';
@@ -114,6 +126,7 @@ const render = (el) => {
         });
 
       break;
+    }
     case 'failed':
       Array.from(el.form.elements)
         .forEach((element) => element.removeAttribute('disabled'));
