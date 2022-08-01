@@ -5,11 +5,11 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" sizes="16x16" href="<%=require('./favicon.ico')%>">
+  <link rel="icon" sizes="16x16" href="<%=require('./images/favicon.ico')%>">
   <title>Заявка в Slack-пространство Hexlet Students</title>
 </head>
 <body class="container py-3">
-  <h1 class="my-3">Подключение в Slack-пространство Hexlet Students</h1>
+  <h1 class="my-3 text-center">Подключение в Slack-пространство Hexlet Students</h1>
   <form action="#" name="email" class="container mb-5 w-75">
     <fieldset>
       <div class="mb-3">
@@ -29,20 +29,21 @@
           placeholder="email на Хекслете"
           autofocus
           required>
-        <p>не продакшен, можно указать любую почту, особенно с <code>@rambler.ru</code></p>
       </div>
       <div class="slackEmail mb-3 d-none">
         <p
-          class="m-0 border-start border-3 border-warning ps-2 text-muted">К сожалению, регистрация на почту российского сервиса ограничена со стороны Slack</p>
+          class="m-0 border-start border-3 border-warning ps-2 text-muted">
+          К сожалению, на эту почту не получится создать аккаунт, потому что Slack ограничил регистрацию для пользователей российских сервисов. Понадобится ещё одна почта.
+        </p>
         <label for="slack">Почта на нероссийском сервисе для Slack</label>
         <input
           id="slack"
-          type="email" name="slack"
+          type="email"
+          name="slack"
           pattern="^.+@.+\..+$"
           class="form-control"
           placeholder="email для входа в Slack"
-          aria-describedby="slackHelp"
-          required>
+          aria-describedby="slackHelp">
         <div id="slackHelp" class="form-text">
           Подходят почты <code>@gmail.com</code>, <code>@icloud.com</code>, <code>@yahoo.com</code> и другие
           "зарубежные" сервисы
@@ -55,6 +56,9 @@
     <button type="submit" class="btn btn-primary" name="submit">Оставить заявку</button>
   </form>
   <div class="container-fluid mb-5 w-75">
+    <p class="border-start border-3 border-info ps-2 fs-5">
+      После оставления заявки вы попадёте на страницу с инструкцией. Прочитайте её, она расскажет, зачем скоро понадобится VPN и настольный компьютер / ноутбук.
+    </p>
     <h2>Почему нужно регистрироваться?</h2>
     <ul class="list-group list-group-numbered list-group-flush">
       <li class="list-group-item">
@@ -64,7 +68,7 @@
         Это удобный мессенджер, вокруг которого мы построили процесс обучения. Многие вещи будут происходить именно в Slack. Если ранее вы им не пользовались, мы обучим
       </li>
       <li class="list-group-item">
-        Даже если вы ранее регистрировались в другом пространстве, нужно заново пройти регистрацию. Slack не имеет общего аккаунта. Новое пространство — новая регистрация
+        Даже если вы ранее регистрировались в другом пространстве, нужно заново пройти регистрацию. Slack не имеет общего аккаунта. Новое пространство &mdash; новая регистрация
       </li>
     </ul>
   </div>
@@ -73,7 +77,8 @@
   <!--  </p>-->
   <p class="border-top my-3 pt-3 text-center">
     Если всё непонятно, ничего не работает, приглашения не дали, никакого праздника, то напишите на
-    <a href="mailto:support@hexlet.io" target="_blank">support@hexlet.io</a>
+    <a href="mailto:support@hexlet.io"
+       target="_blank">support@hexlet.io</a> &mdash; напишите что случилось, приложите скриншоты, укажите версию ОС и браузера.
   </p>
 </body>
 </html>

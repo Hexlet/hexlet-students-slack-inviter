@@ -1,6 +1,6 @@
 import './scss/styles.scss';
 // eslint-disable-next-line
-import favicon from './favicon.ico';
+import favicon from './images/favicon.ico';
 // eslint-disable-next-line
 import * as bootstrap from 'bootstrap';
 

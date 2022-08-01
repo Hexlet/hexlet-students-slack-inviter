@@ -1,6 +1,7 @@
 import './scss/styles.scss';
+import 'core-js/stable';
 // eslint-disable-next-line
-import favicon from './favicon.ico';
+import favicon from './images/favicon.ico';
 // eslint-disable-next-line
 import * as bootstrap from 'bootstrap';
 
@@ -20,36 +21,30 @@ const sendRequest = ({ hexlet, slack }) => {
     newsletter_checked: false,
   };
 
-  // return Promise.reject(new Error('ААААаааааААааааА!!!1!'));
-  return Promise.resolve({
-    code: Math.round(Math.random()),
-    body,
-  });
+  return fetch('https://communityinviter.com/api/questions-invite', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
 
-  // return fetch('https://communityinviter.com/api/questions-invite', {
-  //   method: 'POST',
-  //   body: JSON.stringify(body),
-  //   headers: {
-  //     'Content-Type': 'application/json; charset=UTF-8',
-  //   },
-  // })
-  //   .then((res) => {
-  //     if (res.ok) {
-  //       return res.json();
-  //     }
-  //
-  //     return res
-  //       .json()
-  //       .then(({ message }) => {
-  //         res.message = message || `Ошибка ${res.status}`;
-  //         return Promise.reject(res);
-  //       });
-  //   })
-  //   .catch((err) => {
-  //     // eslint-disable-next-line
-  //     console.error(err);
-  //     throw new Error(`Ошибка отправки инвайта: ${err.message}`);
-  //   });
+      return res
+        .json()
+        .then(({ message }) => {
+          res.message = message || `Ошибка ${res.status}`;
+          return Promise.reject(res);
+        });
+    })
+    .catch((err) => {
+      // eslint-disable-next-line
+      console.error(err);
+      throw new Error(`Ошибка отправки инвайта: ${err.message}`);
+    });
 };
 
 const rusEmailBlockList = [
@@ -78,6 +73,7 @@ const state = {
 const render = (el) => {
   if (state.isRusEmailHexlet && !state.enabledSlackEmail) {
     el.containerSlackEmail.classList.remove(classNameHiddenElement);
+    el.form.slack.setAttribute('required', 'required');
     state.enabledSlackEmail = true;
   }
 
@@ -89,12 +85,6 @@ const render = (el) => {
     el.messageSlackEmail.classList.add('invisible');
   }
 
-  if (!state.isRusEmailHexlet && !state.enabledSlackEmail) {
-    el.form.slack.value = state.hexlet;
-  } else {
-    el.form.slack.value = state.slack;
-  }
-
   switch (state.formState) {
     case 'sending': {
       Array.from(el.form.elements)
@@ -102,7 +92,7 @@ const render = (el) => {
 
       if (!(checkEmail(state.hexlet) && checkEmail(state.slack))) {
         // eslint-disable-next-line
-        alert('Почта не прошла проверку на корректность. Она должна быть вида: name@domain.com');
+        alert(`Почта не прошла проверку на корректность. Она должна быть вида: name@domain.com\nhexlet="${state.hexlet}"\nslack="${state.slack}"`);
         state.formState = 'failed';
         render(el);
 
@@ -162,8 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
   el.form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (state.isRusEmailSlack) return;
-    state.hexlet = el.form.hexlet.value;
-    state.slack = el.form.slack.value;
+    if (state.slack === '' && !state.isRusEmailHexlet) {
+      state.slack = el.form.hexlet.value;
+    }
     state.formState = 'sending';
     render(el);
   });
