@@ -15,7 +15,7 @@ const sendRequest = ({ hexlet, slack }) => {
       {
         question: 'hexlet',
         require: true,
-        answer: hexlet.toLowerCase(),
+        answer: `${hexlet.toLowerCase()} — если почты отличаются, найди по этой почте *профиль* в Amo, и добавь почту, которую студент указал для слака`,
       },
     ],
     newsletter_checked: false,
@@ -106,6 +106,9 @@ const render = (el) => {
           if (code === 1 || code === 0) {
             state.formSendResult = (code === 1) ? 'sent' : 'exist';
           }
+          el.form.reset();
+          state.hexlet = '';
+          state.slack = '';
           render(el);
         })
         .catch((err) => {
