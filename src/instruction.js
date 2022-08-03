@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ${resultAlertMap.get(result)}
       </div>
     `);
+    window.history.replaceState(null, null, window.location.pathname);
   }
-  window.history.replaceState(null, null, window.location.pathname);
   window.addEventListener('resize', () => calcIframesHeight(iframes));
   calcIframesHeight(iframes);
 });

@@ -7,7 +7,7 @@ import * as bootstrap from 'bootstrap';
 
 const sendRequest = ({ hexlet, slack }) => {
   const body = {
-    user: slack,
+    user: slack.toLowerCase(),
     team_domain: 'hexlet-students',
     badge_url: 'hexlet',
     badge_type: 'questions',
@@ -15,7 +15,7 @@ const sendRequest = ({ hexlet, slack }) => {
       {
         question: 'hexlet',
         require: true,
-        answer: hexlet,
+        answer: hexlet.toLowerCase(),
       },
     ],
     newsletter_checked: false,
@@ -123,7 +123,7 @@ const render = (el) => {
       break;
     case 'sent':
       el.form.classList.add(classNameHiddenElement);
-      window.location.href = `instruction.html?result=${state.formSendResult}`;
+      window.location.href = `instruction?result=${state.formSendResult}`;
       break;
     default:
       break;
