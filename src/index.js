@@ -8,7 +8,7 @@ import * as bootstrap from 'bootstrap';
 const sendRequest = ({ hexlet, slack }) => {
   const hexletLC = hexlet.toLowerCase();
   const slackLC = slack.toLowerCase();
-  const message = (hexletLC === slackLC)
+  const messageMail = (hexletLC === slackLC)
     ? ''
     : ` — почты отличаются, найди по ${hexletLC} *профиль* в Amo, добавь поле, укажи почту для слака: ${slackLC}`;
 
@@ -21,7 +21,7 @@ const sendRequest = ({ hexlet, slack }) => {
       {
         question: 'hexlet',
         require: true,
-        answer: `${hexletLC}${message}`,
+        answer: `${hexletLC}${messageMail}`,
       },
     ],
     newsletter_checked: false,
