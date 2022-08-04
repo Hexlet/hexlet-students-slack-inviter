@@ -10,7 +10,7 @@ const sendRequest = ({ hexlet, slack }) => {
   const slackLC = slack.toLowerCase();
   const messageMail = (hexletLC === slackLC)
     ? ''
-    : ` — почты отличаются, найди по ${hexletLC} *профиль* в Amo, добавь поле, укажи почту для слака: ${slackLC}`;
+    : ` — почты отличаются, найди по ${hexletLC} *профиль* в Amo, добавь поле Email, укажи почту для слака: ${slackLC}`;
 
   const body = {
     user: slackLC,
