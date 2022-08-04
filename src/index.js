@@ -6,8 +6,14 @@ import favicon from './images/favicon.ico';
 import * as bootstrap from 'bootstrap';
 
 const sendRequest = ({ hexlet, slack }) => {
+  const hexletLC = hexlet.toLowerCase();
+  const slackLC = slack.toLowerCase();
+  const message = (hexletLC === slackLC)
+    ? ''
+    : ` — почты отличаются, найди по ${hexletLC} *профиль* в Amo, добавь поле, укажи почту для слака: ${slackLC}`;
+
   const body = {
-    user: slack.toLowerCase(),
+    user: slackLC,
     team_domain: 'hexlet-students',
     badge_url: 'hexlet',
     badge_type: 'questions',
@@ -15,7 +21,7 @@ const sendRequest = ({ hexlet, slack }) => {
       {
         question: 'hexlet',
         require: true,
-        answer: `${hexlet.toLowerCase()} — если почты отличаются, найди по этой почте *профиль* в Amo, и добавь почту, которую студент указал для слака`,
+        answer: `${hexletLC}${message}`,
       },
     ],
     newsletter_checked: false,
